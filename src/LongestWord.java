@@ -19,4 +19,5 @@ public class LongestWord {
 
         System.out.println(longestWord);
     }
+
 }

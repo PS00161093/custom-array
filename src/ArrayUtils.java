@@ -27,7 +27,7 @@ class UtilsTestClient {
     public static void main(String[] args) {
 
         int sum = 8;
-        int[] array = {3, 12, 5, 1};
+        int[] array = {3, 12, 5, 2};
         System.out.println(ArrayUtils.isPairWithSumPresent(array, sum));
     }
 }

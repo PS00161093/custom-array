@@ -3,8 +3,18 @@ package src;
 import java.util.HashSet;
 import java.util.Set;
 
-class ArrayUtils {
 
+class UtilsTestClient {
+
+    public static void main(String[] args) {
+
+        int sum = 8;
+        int[] array = {3, 12, 5, 2};
+        System.out.println(ArrayUtils.isPairWithSumPresent(array, sum));
+    }
+}
+
+class ArrayUtils {
 
     public static boolean isPairWithSumPresent(int[] array, int sum) {
 
@@ -19,15 +29,5 @@ class ArrayUtils {
         }
 
         return false;
-    }
-}
-
-class UtilsTestClient {
-
-    public static void main(String[] args) {
-
-        int sum = 8;
-        int[] array = {3, 12, 5, 2};
-        System.out.println(ArrayUtils.isPairWithSumPresent(array, sum));
     }
 }

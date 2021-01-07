@@ -6,7 +6,7 @@ public class IslandCount {
 
         char[][] grid = {{1, 1, 1, 1, 0},
                          {1, 1, 0, 1, 0},
-                         {1, 1, 0, 0, 0},
+                         {1, 1, 0, 0, 1},
                          {0, 0, 0, 1, 0},
                          {0, 1, 0, 1, 0}
         };
@@ -31,7 +31,7 @@ public class IslandCount {
 
     private static int dfs(char[][] grid, int i, int j) {
 
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid.length || grid[i][j] == 0) return 0;
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[i].length || grid[i][j] == 0) return 0;
 
         grid[i][j] = 0;
         dfs(grid, i + 1, j);

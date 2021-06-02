@@ -14,10 +14,7 @@ public class SearchInsertPos {
 
     public static int searchInsert(int[] nums, int target) {
 
-        if (nums.length == 1) {
-            if (nums[0] == target || nums[0] > target) return 0;
-            else return 1;
-        }
+        if (nums.length == 1) return nums[0] == target || nums[0] > target ? 0 : 1;
 
         if (nums.length == 2) {
             if (nums[0] == target || nums[0] > target) return 0;

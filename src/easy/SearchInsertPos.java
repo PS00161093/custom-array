@@ -12,6 +12,13 @@ public class SearchInsertPos {
         System.out.println(searchInsert(arr, t));
     }
 
+    /**
+     * Time complexity: O(log n)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int searchInsert(int[] nums, int target) {
 
         if (nums.length == 1) return nums[0] == target || nums[0] > target ? 0 : 1;
@@ -63,6 +70,18 @@ public class SearchInsertPos {
         }
 
         return -1;
+    }
+
+    public int searchInsertLinear(int[] nums, int target) {
+        int len = nums.length;
+        if (len == 0) return 0;
+        if (len == 1) if (target == nums[0]) return 0;
+        if (len == 1) return target > nums[0] ? 1 : 0;
+        for (int i = 0; i < len; i++) {
+            if (target == nums[i] || target < nums[i]) return i;
+            if (i + 1 < len && target > nums[i] && target < nums[i + 1]) return i + 1;
+        }
+        return len;
     }
 }
 

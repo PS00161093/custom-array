@@ -13,35 +13,20 @@ public class DutchNationFlagAlgo {
 
     }
 
-    public static int[] sort(int[] arr) {
-
+    public static int[] sort(int[] a) {
         int count0 = 0;
         int count1 = 0;
         int count2 = 0;
-
-        for (int num : arr) {
-            if (num == 0) count0++;
-            else if (num == 1) count1++;
-            else if (num == 2) count2++;
+        for (int n1 : a) {
+            if (n1 == 0) count0 += 1;
+            else if (n1 == 1) count1 += 1;
+            else if (n1 == 2) count2 += 1;
         }
 
+        for (int i = 0; i < count0; i++) a[i] = 0;
+        for (int i = count0; i < count0 + count1; i++) a[i] = 1;
+        for (int i = count0 + count1; i < count0 + count1 + count2; i++) a[i] = 2;
 
-        int index = 0;
-        for (int i = 0; i < count0; i++) {
-            arr[index] = 0;
-            index++;
-        }
-        for (int i = 0; i < count1; i++) {
-            arr[index] = 1;
-            index++;
-        }
-        for (int i = 0; i < count2; i++) {
-            arr[index] = 2;
-            index++;
-        }
-
-        return arr;
+        return a;
     }
-
-
 }

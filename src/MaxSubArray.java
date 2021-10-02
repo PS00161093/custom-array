@@ -8,11 +8,9 @@ public class MaxSubArray {
         int maxSubArraySum = inputArray[0];
         int currentSum = 0;
 
-        for (int element : inputArray) {
-            if (currentSum < 0) {
-                currentSum = 0;
-            }
-            currentSum = currentSum + element;
+        for (int n : inputArray) {
+            if (currentSum < 0) currentSum = 0;
+            currentSum = currentSum + n;
             maxSubArraySum = Math.max(maxSubArraySum, currentSum);
         }
         System.out.println(maxSubArraySum);

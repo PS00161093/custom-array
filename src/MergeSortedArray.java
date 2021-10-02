@@ -2,55 +2,31 @@ package src;
 
 import static java.util.Arrays.stream;
 
+/**
+ * https://leetcode.com/problems/merge-sorted-array/
+ */
+
 public class MergeSortedArray {
 
     public static void main(String[] args) {
 
-        int[] firstArray = {3, 6, 9};
+        int[] firstArray = {3, 6, 9, 11, 13, 0, 0, 0, 0};
         int[] secondArray = {1, 3, 9, 10};
-
-        stream(mergeAndSort(firstArray, secondArray)).forEach(System.out::println);
+        mergeAndSort(firstArray, 5, secondArray, secondArray.length);
+        stream(firstArray).forEach(System.out::print);
     }
 
-
-    public static int[] mergeAndSort(int[] firstArray, int[] secondArray) {
-
-        int firstArrayLength = firstArray.length;
-        int secondArrayLength = secondArray.length;
-        int[] resultantArray = new int[firstArrayLength + secondArrayLength];
-
-        int firstArrayIndex = 0, secondArrayIndex = 0, resultantArrayIndex = 0;
-
-        while (firstArrayIndex < firstArrayLength && secondArrayIndex < secondArrayLength) {
-
-            if (firstArrayElement(firstArray, firstArrayIndex) < secondArrayElement(secondArray, secondArrayIndex)) {
-                resultantArray[resultantArrayIndex] = firstArrayElement(firstArray, firstArrayIndex);
-                firstArrayIndex++;
-            } else {
-                resultantArray[resultantArrayIndex] = secondArrayElement(secondArray, secondArrayIndex);
-                secondArrayIndex++;
-            }
-
-            resultantArrayIndex++;
+    public static void mergeAndSort(int[] firstArray, int m, int[] secondArray, int n) {
+        int mi = n - 1;
+        int ni = m - 1;
+        for (int i = m + n - 1; i >= 0; i--) {
+            if (mi == -1)
+                break;
+            else if (ni == -1 || secondArray[mi] >= firstArray[ni])
+                firstArray[i] = secondArray[mi--];
+            else
+                firstArray[i] = firstArray[ni--];
         }
-
-        while (firstArrayIndex < firstArrayLength)
-            resultantArray[resultantArrayIndex++] = firstArray[firstArrayIndex++];
-
-        while (secondArrayIndex < secondArrayLength)
-            resultantArray[resultantArrayIndex++] = secondArray[secondArrayIndex++];
-
-        return resultantArray;
-    }
-
-    private static int secondArrayElement(int[] secondArray, int secondArrayIndex) {
-
-        return secondArray[secondArrayIndex];
-    }
-
-    private static int firstArrayElement(int[] firstArray, int firstArrayIndex) {
-
-        return firstArray[firstArrayIndex];
     }
 
 }

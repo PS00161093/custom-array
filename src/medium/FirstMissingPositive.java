@@ -1,8 +1,6 @@
 package src.medium;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * https://leetcode.com/problems/first-missing-positive/
@@ -11,23 +9,25 @@ public class FirstMissingPositive {
 
     public static void main(String[] args) {
 
-        int[] nums = {3, 4, -1, 1};
+        int[] nums = {1,2,3,4,5,6,7,8,9,10,11,12,23,20};
         System.out.println(firstMissingPositive(nums));
     }
 
     public static int firstMissingPositive(int[] nums) {
 
-        List<Integer> list = new LinkedList<>();
+        TreeSet<Integer> list = new TreeSet<>();
         for (int n : nums) if (n > 0) list.add(n);
-        Collections.sort(list);
-
-        if (list.isEmpty() || list.get(0) > 1) return 1;
-
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (list.get(i + 1) - list.get(i) >= 2) return list.get(i) + 1;
+        if (list.isEmpty() || list.first() > 1) return 1;
+        Iterator<Integer> it = list.iterator();
+        int x = it.next();
+        int y;
+        while(it.hasNext()){
+            y = it.next();
+            if(y - x >= 2) return x + 1;
+            x = y;
         }
 
-        return list.get(list.size() - 1) + 1;
+        return list.last() + 1;
     }
 
 }

@@ -7,29 +7,22 @@ public class SubSequence {
 
     public static void main(String[] args) {
 
-        List<Integer> array = Arrays.asList(5, 1, 22, 25, 6, -1, 8, 10);
-        List<Integer> sequence = Arrays.asList(1, 6, -1, 10);
+        List<Integer> array = Arrays.asList(1, 1, 1, 1, 1);
+        List<Integer> sequence = Arrays.asList(1, 1, 1);
         System.out.println(isValidSubsequence(array, sequence));
     }
 
     public static boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
 
-        boolean isIt = false;
-        int childIndex = -1;
-
-        for (int n : sequence) {
-            int index = array.indexOf(n);
-            if (index != -1) {
-                if (index > childIndex) {
-                    childIndex = index;
-                    isIt = true;
-                } else {
-                    return false;
-                }
-            } else {
-                isIt = false;
+        int arrIdx = 0;
+        int seqIdx = 0;
+        while (arrIdx < array.size() && seqIdx < sequence.size()) {
+            if (array.get(arrIdx).equals(sequence.get(seqIdx))) {
+                seqIdx++;
             }
+            arrIdx++;
         }
-        return isIt;
+
+        return seqIdx == sequence.size();
     }
 }

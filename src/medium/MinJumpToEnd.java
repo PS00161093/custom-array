@@ -6,7 +6,7 @@ package src.medium;
 public class MinJumpToEnd {
 
     public static void main(String[] args) {
-        int[] nums = {2, 3, 1};
+        int[] nums = {2, 3, 1, 1, 4};
         System.out.println(jump(nums));
     }
 
@@ -16,7 +16,6 @@ public class MinJumpToEnd {
         int nextIndex = 0;
 
         for (int i = 0; i < nums.length - 1; i++) {
-            System.out.println("i = " + i);
             nextIndex = Math.max(nextIndex, i + nums[i]);
             if (i == currEnd) {
                 result++;

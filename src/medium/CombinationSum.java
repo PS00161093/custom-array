@@ -33,7 +33,10 @@ public class CombinationSum {
                 combinationSum(result, currCombination, candidates, target - candidates[i], i);
                 currCombination.remove(currCombination.size() - 1);
             }
-        } else if (target == 0) result.add(new LinkedList<>(currCombination));
+        }
+        else if (target == 0) {
+            result.add(new LinkedList<>(currCombination));
+        }
     }
 
 }

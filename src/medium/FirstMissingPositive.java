@@ -15,10 +15,10 @@ public class FirstMissingPositive {
 
     public static int firstMissingPositive(int[] nums) {
 
-        TreeSet<Integer> list = new TreeSet<>();
-        for (int n : nums) if (n > 0) list.add(n);
-        if (list.isEmpty() || list.first() > 1) return 1;
-        Iterator<Integer> it = list.iterator();
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        for (int n : nums) if (n > 0) treeSet.add(n);
+        if (treeSet.isEmpty() || treeSet.first() > 1) return 1;
+        Iterator<Integer> it = treeSet.iterator();
         int x = it.next();
         int y;
         while(it.hasNext()){
@@ -27,7 +27,7 @@ public class FirstMissingPositive {
             x = y;
         }
 
-        return list.last() + 1;
+        return treeSet.last() + 1;
     }
 
 }
